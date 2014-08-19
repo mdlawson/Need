@@ -1,0 +1,30 @@
+{
+    "variables" : {
+        "APIROOT": "http://node-hnapi.herokuapp.com"
+    },
+    "pages": {
+        "frontpage": {
+            "url": "${APIROOT}/news",
+            "method": "GET",
+            "format": "Article"
+        }
+    },
+    "actions": {
+
+    },
+    "formats": {
+        "Article": {
+            "id": "@id",
+            "url": "@url",
+            "domain": "@domain",
+            "points": "@points",
+            "user": "@user",
+            "time": "@time",
+            "comments_count": "@comments_count"
+        }
+    },
+
+    "search": {
+
+    }
+}
