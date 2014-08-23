@@ -29,7 +29,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:layout="@android:layout/list_content" />
+                tools:layout="@android:layout/list_content">
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:background="@color/dark_grey"/>
+        </FrameLayout>
 
         <FrameLayout
                 android:id="@+id/article_detail_container"

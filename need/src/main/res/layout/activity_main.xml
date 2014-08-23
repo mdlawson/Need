@@ -7,7 +7,12 @@
     <FrameLayout
               android:id="@+id/article_list_container"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"/>
+              android:layout_height="match_parent">
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="?android:attr/actionBarSize"
+                        android:background="@color/dark_grey"/>
+    </FrameLayout>
 
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer"
@@ -17,5 +22,6 @@
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:background="#111"/>
+        android:background="#111"
+        android:paddingTop="?android:attr/actionBarSize"/>
 </android.support.v4.widget.DrawerLayout>

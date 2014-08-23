@@ -44,7 +44,7 @@ public class ArticleListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.article_list_item, parent, false);
         }
         Article article = getItem(position);
-        ((TextView) convertView).setText(article.toString());
+        ((TextView) convertView).setText(article.getTitle());
 
         return convertView;
     }

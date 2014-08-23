@@ -2,7 +2,9 @@ package com.mdlawson.need;
 
 
 
+import android.app.Activity;
 import android.app.FragmentManager;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v13.app.FragmentPagerAdapter;
@@ -37,6 +39,8 @@ public class SectionsFragment extends Fragment {
     public SectionsFragment() {
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -48,11 +52,23 @@ public class SectionsFragment extends Fragment {
             section.reload();
         }
 
+        getActivity().getActionBar().setBackgroundDrawable(new ColorDrawable(mSource.getColor()));
+
         mPager.setAdapter(new SectionsAdapter(getChildFragmentManager(), mSource.getSections()));
 
-
-
         mTabs.setViewPager(mPager);
+        mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            @Override
+            public int getIndicatorColor(int position) {
+                return mSource.getColor();
+            }
+
+            @Override
+            public int getDividerColor(int position) {
+                return 0x00FFFFFF;
+            }
+        });
+
         return view;
     }
 

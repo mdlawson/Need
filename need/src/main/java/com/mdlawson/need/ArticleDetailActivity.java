@@ -22,7 +22,7 @@ public class ArticleDetailActivity extends BaseActivity {
                     .add(R.id.article_detail_container, fragment)
                     .commit();
         }
-    }t
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

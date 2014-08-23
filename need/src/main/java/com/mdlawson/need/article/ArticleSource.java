@@ -1,17 +1,22 @@
 package com.mdlawson.need.article;
 
-import android.graphics.Color;
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Response;
+import de.greenrobot.event.EventBus;
 
 import java.util.*;
 
 public abstract class ArticleSource  {
 
     private List<Section> sections;
+    protected EventBus bus;
+    protected OkHttpClient client;
 
     public ArticleSource() {
         sections = new ArrayList<>();
+        bus = EventBus.getDefault();
+        client = bus.getStickyEvent(OkHttpClient.class);
     }
 
     public void reset() {
@@ -46,5 +51,5 @@ public abstract class ArticleSource  {
     }
 
     public abstract String getName();
-    public abstract Color getColor();
+    public abstract int getColor();
 }

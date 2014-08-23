@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity implements ListView.OnItemClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MAIN", "onCreate()");
+
         setContentView(R.layout.activity_main);
 
         ButterKnife.inject(this);
@@ -174,35 +174,5 @@ public class MainActivity extends BaseActivity implements ListView.OnItemClickLi
             Intent detailIntent = new Intent(this, ArticleDetailActivity.class);
             startActivity(detailIntent);
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("MAIN", "onStart()");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("MAIN", "onRestart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("MAIN", "onResume()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("MAIN", "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("MAIN", "onDestroy()");
     }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 import com.mdlawson.need.article.ArticleListAdapter;
 import com.mdlawson.need.article.Section;
+import com.mdlawson.need.events.SectionUpdated;
 import com.mdlawson.need.events.SelectSource;
 import com.mdlawson.need.events.ShowArticle;
 import de.greenrobot.event.EventBus;
@@ -35,14 +36,13 @@ public class ArticleListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        EventBus.getDefault().register(this);
+
         int section = getArguments().getInt(ARG_SECTION);
-
         mSection = EventBus.getDefault().getStickyEvent(SelectSource.class).getSource().getSections().get(section);
-
         mAdapter = new ArticleListAdapter(getActivity());
         mAdapter.updateArticles(mSection.getArticles());
         setListAdapter(mAdapter);
-
     }
 
 
@@ -73,5 +73,10 @@ public class ArticleListFragment extends ListFragment {
         }
 
         mActivatedPosition = position;
+    }
+    public void onEventMainThread(SectionUpdated sectionUpdated) {
+        if (sectionUpdated.getSection() == mSection) {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }

@@ -22,7 +22,7 @@ public class DummySource extends ArticleSource {
     }
 
     @Override
-    public Color getColor() {
-        return null;
+    public int getColor() {
+        return 0xFFFF6600;
     }
 }

@@ -16,13 +16,12 @@ public class DummySection extends Section {
     }
 
     @Override
-    public Status get(int page) throws ArticleSource.SourceException, ArticleSource.NetworkException {
+    public void get(int page) {
         List<Article> articles = new ArrayList<>();
         for (int count = (page - 1) * PER_PAGE; count <= page * PER_PAGE; count++) {
-            articles.add(new Article().id(String.valueOf(count)).title("Dummy Article " + count));
+            articles.add(new DummyArticle().id(String.valueOf(count)).title("Dummy Article " + count));
         }
         yield(articles);
-        return Status.CONTINUE;
     }
 
     @Override
