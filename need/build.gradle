@@ -53,7 +53,7 @@ dependencies {
     compile 'com.android.support:support-v4:19.+'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
     compile 'com.android.support:support-v13:19.+'
-    compile 'com.google.guava:guava:17.0'
+    //compile 'com.google.guava:guava:17.0'
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'com.squareup.okhttp:okhttp:2.0.0'

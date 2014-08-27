@@ -1,10 +1,8 @@
 package com.mdlawson.need.article.hn;
 
-import com.google.common.base.Splitter;
 import com.mdlawson.need.article.Article;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class HNPage {
@@ -19,27 +17,29 @@ public class HNPage {
         parsePage(html);
     }
 
+    static final String delim = "<tr><td align=\"right\" valign=\"top\" class=\"title\">";
+
     private void parsePage(String html) {
-        Splitter split = Splitter.on("<tr><td align=\"right\" valign=\"top\" class=\"title\">");
-        Iterator<String> parts = split.split(html).iterator();
-        String header = parts.next();
-        while (parts.hasNext()) {
-            parsePost(parts.next());
+        int start = html.indexOf(delim) + delim.length();
+        int end;
+        while ((end = html.indexOf(delim, start)) != -1) {
+            parsePost(html.substring(start, end));
+            start = end + delim.length();
         }
     }
 
 
-    final char quote = '\"';
-    final String idStart = "<a id=\"up_";
-    final String urlStart = "<a href=\"";
-    final char endTag = '>';
-    final String linkEnd = "</a>";
-    final String domainStart = " (";
-    final String domainEnd = ") ";
-    final String pointsEnd = " point";
-    final String userStart = "<a href=\"user?id=";
-    final char timeEnd = '|';
-    final String commentsEnd = " comment";
+    static final char quote = '\"';
+    static final String idStart = "<a id=\"up_";
+    static final String urlStart = "<a href=\"";
+    static final char endTag = '>';
+    static final String linkEnd = "</a>";
+    static final String domainStart = " (";
+    static final String domainEnd = ") ";
+    static final String pointsEnd = " point";
+    static final String userStart = "<a href=\"user?id=";
+    static final char timeEnd = '|';
+    static final String commentsEnd = " comment";
 
     // holy shit this parser is fragile. Help.
     private void parsePost(String html) {
@@ -104,10 +104,10 @@ public class HNPage {
             // Comments
             end = html.indexOf(commentsEnd, end + 1);
             if (end == -1) {
-                article.comments = "0";
+                article.commentCount = "0";
             } else {
                 start = html.lastIndexOf(endTag, end) + 1;
-                article.comments = html.substring(start, end);
+                article.commentCount = html.substring(start, end);
             }
         }
 

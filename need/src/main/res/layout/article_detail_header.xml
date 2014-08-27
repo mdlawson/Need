@@ -1,14 +1,12 @@
 <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/article_detail"
-        tools:context="com.mdlawson.need.ArticleDetailFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="?android:attr/actionBarSize">
 
+
     <LinearLayout
+
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,5 +36,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </LinearLayout>
